@@ -4,7 +4,7 @@
 3. Copy the activity code and instructions from your Boodle Notes into your index.js.
 */
 // 4. Create a variable groceryList that has a value of an array of grocery items
-let groceryList = ["beef", "bacon", "pork", "chicken", "onions", "garlic"]
+let groceryList = []
 
 console.log("Items to buy:")
 console.log(groceryList);

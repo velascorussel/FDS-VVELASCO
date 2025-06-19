@@ -85,7 +85,7 @@ let students = []
 
 function displayStudents(){
     if(students.length == 0 || students == []){
-        console.log("The array is empty");
+        console.log("The array is empty"); 
     }else{
         for(let index = 0; index < student1.length; index++){
             console.log(index + ". " + students[index - 1]);
