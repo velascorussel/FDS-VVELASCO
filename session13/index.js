@@ -2,6 +2,7 @@ const express = require("express");
 const mysql = require("mysql2");
 const bodyParser = require("body-parser");
 const bcrypt = require("bcryptjs");
+const cors = require("cors");
 
 const app = express();
 const port = 3000;
@@ -10,6 +11,7 @@ const port = 3000;
 app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 app.use(bodyParser.json());
+app.use(cors());
 
 // DB Connection Settings
 const db = mysql.createConnection({
@@ -207,7 +209,7 @@ app.post("/users/register", async (req, res) => {
 
         if(result.length > 0){
             res.send({
-                code: 1,
+                code: 2,
                 codeMessage: "user-already-existing",
                 details: "The email you provided was already registered."
             })
@@ -236,9 +238,9 @@ app.post("/users/register", async (req, res) => {
     })
 })
 
-//USER AUTH/login
+// User Auth/Login
 
-app.post("/user/login", (req, res) => {
+app.post("/users/login", (req, res) => {
     const {email, pass} = req.body;
     const sql = "SELECT * FROM users WHERE email = ?";
 
@@ -247,36 +249,36 @@ app.post("/user/login", (req, res) => {
             res.send({
                 code: 0,
                 codeMessage: "server-error",
-                details: "there is a problem with your request. please try again"
+                details: "There is a problem with your request. Please try again."
             })
-        }else if(result.lenght <= 0){
+        }else if(result.length <= 0){
             res.send({
                 code: 1,
                 codeMessage: "user-not-found",
-                details: "the email provided is not registered"
+                details: "The email provided is not registered."
             })
         }else{
             const user = result[0];
-            const isMatched = await bycrypt.compare(pass, user.pass);
+            const isMatched = await bcrypt.compare(pass, user.pass);
 
             if(!isMatched){
                 res.send({
                 code: 1,
                 codeMessage: "error-details",
-                details: "the email password is incorrect"
+                details: "The email or password is incorrect."
                 })
             }else{
                 res.send({
                 code: 1,
                 codeMessage: "login-success",
-                details: `welcome to Utask, ${user.fname} ${user.lname}!`
+                details: `Welcome to UTask, ${user.fname} ${user.lname}!`
                 })
-
-                console.log
             }
         }
     })
 })
+
+
 
 
 
