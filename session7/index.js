@@ -87,7 +87,7 @@ console.log(someValid)
 //filter
 
 let filterValid = numbers.filter(function(number){
-    return number < 10
+    return number < 3
 })
 
 console.log(filterValid)

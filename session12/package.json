@@ -1,0 +1,23 @@
+{
+  "name": "fds-velasco",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/velascorussel/FDS-VVELASCO.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/velascorussel/FDS-VVELASCO/issues"
+  },
+  "homepage": "https://github.com/velascorussel/FDS-VVELASCO#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "description": ""
+}
